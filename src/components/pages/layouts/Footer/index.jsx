@@ -15,7 +15,7 @@ export default function Footer({ linkCount = 6 }) {
           letterSpacing: '.18em',
         }}
       >
-        Jogos. Pessoas. Histórias.
+        Bem-vindo(a) à sua fortaleza.
       </p>
 
       {/* Copyright com ornamentos */}
