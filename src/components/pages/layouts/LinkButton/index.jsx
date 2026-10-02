@@ -21,14 +21,15 @@ const ICONS = {
 
 export default function LinkButton({ link, index }) {
   const Icon = ICONS[link.icon] || ShoppingBag
+  const isStore = link.id === 'loja'
 
   return (
     <a
       id={`link-${link.id}`}
-      className={`link-btn rise${link.featured ? ' featured' : ''}`}
+      className={`link-btn rise${isStore ? ' store-button' : ''}`}
       style={{ '--i': index }}
       href={
-        link.id === 'loja'
+        isStore
           ? 'https://meeples-keep.lojaintegrada.com.br/'
           : link.url
       }
@@ -38,7 +39,8 @@ export default function LinkButton({ link, index }) {
         aria-hidden="true"
         strokeWidth={1.75}
       />
-      <span>{link.id === 'loja' ? 'Loja' : link.title}</span>
+
+      <span>{isStore ? 'Loja' : link.title}</span>
     </a>
   )
 }

@@ -1,10 +1,18 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─── Reset ─────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { min-height: 100%; }
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  min-height: 100%;
+}
+
 body {
   background-color: #F8F4E9;
   color: #1B2E3B;
@@ -14,6 +22,7 @@ body {
 }
 
 /* ─── Fundo com textura ────────────────────────────── */
+
 .bg-stage {
   min-height: 100vh;
   min-height: 100dvh;
@@ -31,16 +40,22 @@ body {
   position: relative;
 }
 
-/* Halo de luz central (mais sutil no tema claro) */
+/* Halo de luz central */
+
 .bg-glow {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 50% at 50% 42%, rgba(255,255,255,0.4) 0%, transparent 60%);
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 42%,
+    rgba(255,255,255,0.4) 0%,
+    transparent 60%
+  );
   z-index: 0;
 }
 
 /* ─── Botões ─────────────────────────────────────────── */
+
 .link-btn {
   display: flex;
   align-items: center;
@@ -61,7 +76,11 @@ body {
   box-shadow:
     0 4px 14px rgba(27, 46, 59, 0.15),
     inset 0 1px 0 rgba(255,255,255,0.1);
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, filter .2s ease;
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease,
+    filter .2s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -71,7 +90,11 @@ body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 60%);
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.05) 0%,
+    transparent 60%
+  );
   pointer-events: none;
 }
 
@@ -98,7 +121,8 @@ body {
   outline-offset: 3px;
 }
 
-/* Botão destaque (WhatsApp) */
+/* ─── Botão destaque: WhatsApp ─────────────────────── */
+
 .link-btn.featured {
   min-height: 64px;
   background: linear-gradient(180deg, #c92222 0%, #B11E1E 100%);
@@ -118,6 +142,33 @@ body {
     inset 0 1px 0 rgba(255,255,255,0.2);
 }
 
+/* ─── Botão Loja: destaque em vermelho ─────────────── */
+
+.link-btn.store-button {
+  min-height: 64px;
+  background: linear-gradient(180deg, #e53935 0%, #b71c1c 100%);
+  border-color: #8f1818;
+  color: #ffffff;
+  font-weight: 800;
+  box-shadow:
+    0 6px 20px rgba(183, 28, 28, 0.28),
+    0 4px 14px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2);
+}
+
+.link-btn.store-button:hover {
+  background: linear-gradient(180deg, #f44336 0%, #a91515 100%);
+  filter: brightness(1.08);
+  border-color: #C9A96B;
+  box-shadow:
+    0 10px 28px rgba(183, 28, 28, 0.35),
+    0 8px 22px rgba(0, 0, 0, 0.15);
+}
+
+.link-btn.store-button:active {
+  transform: scale(.98);
+}
+
 .btn-icon {
   width: 22px;
   height: 22px;
@@ -126,6 +177,7 @@ body {
 }
 
 /* ─── Animação de entrada ────────────────────────────── */
+
 .rise {
   opacity: 0;
   transform: translateY(10px);
@@ -134,15 +186,32 @@ body {
 }
 
 @keyframes rise {
-  to { opacity: 1; transform: translateY(0); }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* ─── Reduced motion ─────────────────────────────────── */
-@media (prefers-reduced-motion: reduce) {
-  .rise         { animation: none; opacity: 1; transform: none; }
-  .link-btn,
-  .link-btn .btn-icon { transition: none; }
-  .link-btn:hover     { transform: none; filter: none; }
-  .link-btn:hover .btn-icon { transform: none; }
-}
 
+@media (prefers-reduced-motion: reduce) {
+  .rise {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .link-btn,
+  .link-btn .btn-icon {
+    transition: none;
+  }
+
+  .link-btn:hover {
+    transform: none;
+    filter: none;
+  }
+
+  .link-btn:hover .btn-icon {
+    transform: none;
+  }
+}
