@@ -1,31 +1,44 @@
-import { MessageCircle, Instagram, Facebook, Youtube, ShoppingBag, ShoppingCart, Store } from 'lucide-react'
+
+import {
+  MessageCircle,
+  Instagram,
+  Facebook,
+  Youtube,
+  ShoppingBag,
+  ShoppingCart,
+  Store
+} from 'lucide-react'
 
 const ICONS = {
-  whatsapp:    MessageCircle,
-  instagram:   Instagram,
-  facebook:    Facebook,
-  youtube:     Youtube,
-  bag:         ShoppingBag,
-  cart:        ShoppingCart,
-  store:       Store,
+  whatsapp: MessageCircle,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube,
+  bag: ShoppingBag,
+  cart: ShoppingCart,
+  store: Store,
 }
 
 export default function LinkButton({ link, index }) {
-  const Icon     = ICONS[link.icon] || ShoppingBag
-  const isPlaceholder = link.url === '#'
-  const external = /^https?:/.test(link.url) && !isPlaceholder
+  const Icon = ICONS[link.icon] || ShoppingBag
 
   return (
     <a
       id={`link-${link.id}`}
-      className={`link-btn rise${link.featured ? ' featured' : ''}${isPlaceholder ? ' opacity-60 cursor-not-allowed' : ''}`}
+      className={`link-btn rise${link.featured ? ' featured' : ''}`}
       style={{ '--i': index }}
-      href={link.url}
-      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-      onClick={isPlaceholder ? (e) => e.preventDefault() : undefined}
+      href={
+        link.id === 'loja'
+          ? 'https://meeples-keep.lojaintegrada.com.br/'
+          : link.url
+      }
     >
-      <Icon className="btn-icon" aria-hidden="true" strokeWidth={1.75} />
-      <span>{link.title}</span>
+      <Icon
+        className="btn-icon"
+        aria-hidden="true"
+        strokeWidth={1.75}
+      />
+      <span>{link.id === 'loja' ? 'Loja' : link.title}</span>
     </a>
   )
 }
